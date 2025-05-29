@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "stack-pooled"
+s3_bucket = "sam-bootstrap-bucket-db06e6a0-ba8c-4869-bd61-d25ee258ee0e"
+s3_prefix = "serverless-saas-tenant"
+region = "us-east-1"
+confirm_changeset = false
+capabilities = "CAPABILITY_NAMED_IAM"
+cached="true"
+parallel="true"
