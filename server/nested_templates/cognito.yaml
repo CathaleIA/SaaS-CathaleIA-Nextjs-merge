@@ -33,11 +33,11 @@ Resources:
         InviteMessageTemplate:
           EmailMessage: !Join 
             - "" 
-            - - "Login into Cathaleia application at "
+            - - "Ingresa a Cathaleia UI mediante "
               - "https://"
               - !Ref TenantUserPoolCallbackURLParameter 
               - "/"
-              - " with username {username} and temporary password {####}"
+              - " con el username : {username} y clave temporal: {####}"
           EmailSubject: !Join 
             - "" 
             - - "Your temporary password for Cathaleia application"
@@ -96,14 +96,14 @@ Resources:
         InviteMessageTemplate:
           EmailMessage: !Join 
             - "" 
-            - - "Login into admin UI application at " 
+            - - "Ingresa a la aplicacion admin UI mediante " 
               - "https://"
               - !Ref AdminUserPoolCallbackURLParameter 
               - "/" 
-              - " with username {username} and temporary password {####}"
+              - " con el username : {username} y clave temporal: {####}"
           EmailSubject: !Join 
             - ""
-            - - "Your temporary password for admin UI application"  
+            - - "Acceso a la aplicación admin UI con contraseña temporal"  
       Schema:
         - AttributeDataType: "String"
           Name: email
