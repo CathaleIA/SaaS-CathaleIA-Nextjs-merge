@@ -56,7 +56,7 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
   echo "Bootstrap server code is getting deployed"
   cd ../server
   REGION=$(aws configure get region || echo "us-east-1")
-  DEFAULT_SAM_S3_BUCKET=$(grep s3_bucket samconfig.toml | cut -d'=' -f2 | cut -d \" -f2)
+  DEFAULT_SAM_S3_BUCKET=$(grep s3_bucket shared-samconfig.toml | cut -d'=' -f2 | cut -d \" -f2)
 
   echo "Validating S3 bucket: $DEFAULT_SAM_S3_BUCKET"
   if ! aws s3 ls "s3://${DEFAULT_SAM_S3_BUCKET}"; then
@@ -68,7 +68,7 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
       --bucket "$SAM_S3_BUCKET" \
       --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
     
-    sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" samconfig.toml
+    sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" shared-samconfig.toml
     sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" ../../Lab7/samconfig.toml
   fi
 
