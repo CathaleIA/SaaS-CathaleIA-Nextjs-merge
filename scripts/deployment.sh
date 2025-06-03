@@ -206,23 +206,23 @@ EoF
   echo "Completed configuring environment for App Client"
   echo "Successfully completed deploying Application UI"
 
-  echo "Configuring environment for Landing Client"
-  cd ../Landing
-  cat <<EoF >.env.production
-NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
-NEXT_PUBLIC_AWS_REGION="$REGION"
-EoF
+  echo "Configuring environment for Landing Client, omitido de momento"
+#   cd ../Landing
+#   cat <<EoF >.env.production
+# NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
+# NEXT_PUBLIC_AWS_REGION="$REGION"
+# EoF
 
-  # Limpiar caches y builds anteriores
-  rm -rf .next/ node_modules/ out/
+#   # Limpiar caches y builds anteriores
+#   rm -rf .next/ node_modules/ out/
 
-  # Instalar dependencias limpiando cache
-  npm cache clean --force
-  npm install --force
-  npm install --save-dev @types/next postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
+#   # Instalar dependencias limpiando cache
+#   npm cache clean --force
+#   npm install --force
+#   npm install --save-dev @types/next postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
 
-  npm run build
-  aws s3 sync --delete --cache-control no-store ./out "s3://${LANDING_APP_SITE_BUCKET}"
+#   npm run build
+#   aws s3 sync --delete --cache-control no-store ./out "s3://${LANDING_APP_SITE_BUCKET}"
 
   echo "Deployment completed successfully"
 
