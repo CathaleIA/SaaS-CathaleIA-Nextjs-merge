@@ -77,7 +77,7 @@ export class ServerlessSaaSStack extends cdk.Stack {
         new codepipeline_actions.GitHubSourceAction({
           actionName: 'GitHub_Source',
           owner: 'CathaleIA',
-          repo: 'SaaS-CathaleIA-Nextjs',
+          repo: 'SaaS-CathaleIA-Nextjs-merge',
           branch: 'main',
           oauthToken: cdk.SecretValue.secretsManager('github-token'),
           output: sourceOutput,
@@ -92,7 +92,7 @@ export class ServerlessSaaSStack extends cdk.Stack {
 
     //Declare a new CodeBuild project
     const buildProject = new codebuild.PipelineProject(this, 'Build', {
-      buildSpec : codebuild.BuildSpec.fromSourceFilename("Lab6/server/tenant-buildspec.yml"),
+      buildSpec : codebuild.BuildSpec.fromSourceFilename("server/tenant-buildspec.yml"),
       environment: { buildImage: codebuild.LinuxBuildImage.STANDARD_7_0 },
       environmentVariables: {
         'PACKAGE_BUCKET': {

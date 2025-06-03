@@ -258,5 +258,8 @@ Outputs:
     Description: The api key of system admins
     Value: !Ref ApiKeyOperationUsersParameter
     Export:
-      Name: "Serverless-SaaS-ApiKeyOperationUsers"    
+      Name: "Serverless-SaaS-ApiKeyOperationUsers"   
+  CognitoAdminUserGroupName:
+    Description: The Admin Management userpool admin user group name
+    Value: !GetAtt Cognito.Outputs.CognitoAdminUserGroupName    
           
