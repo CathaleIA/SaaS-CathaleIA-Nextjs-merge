@@ -69,6 +69,7 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
       --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
     
     sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" shared-samconfig.toml
+    sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" tenant-samconfig.toml
     sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" ../Lab7/samconfig.toml
   fi
 

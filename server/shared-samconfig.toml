@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "serverless-saas"
-s3_bucket = "sam-bootstrap-bucket-shared-template-deploy"
+s3_bucket = "sam-bootstrap-bucket-db06e6a0-ba8c-4869-bd61-d25ee258ee0e"
 s3_prefix = "serverless-saas"
 region = "us-east-1"
 confirm_changeset = false
