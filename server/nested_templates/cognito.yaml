@@ -187,3 +187,5 @@ Outputs:
     Value: !GetAtt CognitoOperationUsersUserPool.ProviderURL
   CognitoAdminUserGroupName:
     Value: !Ref CognitoAdminUserGroup
+  CognitoUserPoolDomain:
+    Value: !GetAtt CognitoUserPoolDomain.Domain

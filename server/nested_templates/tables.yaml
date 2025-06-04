@@ -50,6 +50,7 @@ Resources:
               - userPoolId
               - appClientId
               - apiGatewayUrl
+              - userPoolDomain
             ProjectionType: INCLUDE      
       TableName: ServerlessSaaS-TenantDetails
   TenantUserMappingTable:

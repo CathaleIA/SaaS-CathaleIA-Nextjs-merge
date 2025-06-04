@@ -19,6 +19,7 @@ tracer = Tracer()
 
 
 region = os.environ['AWS_REGION']
+pool_domain = os.environ['DOMAIN_USERPOOL']
 
 #This method has been locked down to be only
 def create_tenant(event, context):
@@ -52,6 +53,7 @@ def create_tenant(event, context):
                     'apiKey': tenant_details['apiKey'],
                     'userPoolId': tenant_details['userPoolId'],                 
                     'appClientId': tenant_details['appClientId'],
+                    'userPoolDomain' : pool_domain,
                     'dedicatedTenancy': tenant_details['dedicatedTenancy'],
                     'isActive': True,
                     'apiGatewayUrl': api_gateway_url

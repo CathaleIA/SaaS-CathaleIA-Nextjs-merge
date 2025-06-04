@@ -14,6 +14,7 @@ region = os.environ['AWS_REGION']
 create_tenant_admin_user_resource_path = os.environ['CREATE_TENANT_ADMIN_USER_RESOURCE_PATH']
 create_tenant_resource_path = os.environ['CREATE_TENANT_RESOURCE_PATH']
 provision_tenant_resource_path = os.environ['PROVISION_TENANT_RESOURCE_PATH']
+pool_domain = os.environ['DOMAIN_USERPOOL']
 
 platinum_tier_api_key = os.environ['PLATINUM_TIER_API_KEY']
 premium_tier_api_key = os.environ['PREMIUM_TIER_API_KEY']
