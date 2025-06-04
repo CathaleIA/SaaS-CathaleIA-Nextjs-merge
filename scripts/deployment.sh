@@ -82,26 +82,26 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
   cd ../scripts
 fi  
 
-# if [[ $server -eq 1 ]] || [[ $tenant -eq 1 ]]; then
-#   echo "Tenant server code is getting deployed"
-#   cd ../server
-#   REGION=$(aws configure get region || echo "us-east-1")
-#   sam build -t tenant-template.yaml
-#   sam deploy --config-file tenant-samconfig.toml --region=$REGION
-# fi
+if [[ $server -eq 1 ]] || [[ $tenant -eq 1 ]]; then
+  echo "Tenant server code is getting deployed"
+  cd ../server
+  REGION=$(aws configure get region || echo "us-east-1")
+  sam build -t tenant-template.yaml
+  sam deploy --config-file tenant-samconfig.toml --region=$REGION
+fi
 
-# if [[ $server -eq 1 ]] || [[ $pipeline -eq 1 ]]; then
-#   echo "CI/CD pipeline code is getting deployed"
+if [[ $server -eq 1 ]] || [[ $pipeline -eq 1 ]]; then
+  echo "CI/CD pipeline code is getting deployed"
 
-#   #Deploying CI/CD pipeline
-#   cd ../server/TenantPipeline/
-#   npm install && npm run build 
-#   cdk bootstrap  
-#   cdk deploy --require-approval never
+  #Deploying CI/CD pipeline
+  cd ../server/TenantPipeline/
+  npm install && npm run build 
+  cdk bootstrap  
+  cdk deploy --require-approval never
 
-#   cd ../../scripts
+  cd ../../scripts
 
-# fi
+fi
 
 
 if [[ $client -eq 1 ]]; then
