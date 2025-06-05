@@ -282,7 +282,7 @@ def load_tenant_config(event, context):
         response = table_tenant_details.query(
             IndexName="ServerlessSaas-TenantConfig",
             KeyConditionExpression=Key('tenantName').eq(tenantName),
-            ProjectionExpression="userPoolId, appClientId, apiGatewayUrl"
+            ProjectionExpression="userPoolId, appClientId, apiGatewayUrl,userPoolDomain"
         ) 
     except Exception as e:
         raise Exception('Error getting tenant config', e)
