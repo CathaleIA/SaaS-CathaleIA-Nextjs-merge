@@ -188,4 +188,5 @@ Outputs:
   CognitoAdminUserGroupName:
     Value: !Ref CognitoAdminUserGroup
   CognitoUserPoolDomain:
-    Value: !GetAtt CognitoUserPoolDomain.Domain
+  Description: "Nombre de dominio del User Pool"
+  Value: !Ref CognitoUserPoolDomain  # Esta es la clave del cambio
