@@ -22,6 +22,8 @@ Parameters:
     Type: String
   CognitoUserPoolClientId:
     Type: String
+  CognitoUserPoolDomain:
+    Type: String
 Resources:
   #Custom resources
   
@@ -32,6 +34,7 @@ Resources:
       SettingsTableName: !Ref ServerlessSaaSSettingsTableName
       cognitoUserPoolId: !Ref CognitoUserPoolId
       cognitoUserPoolClientId: !Ref CognitoUserPoolClientId
+      CognitoUserPoolDomain: !Ref CognitoUserPoolDomain
   
   
   UpdateTenantStackMap:

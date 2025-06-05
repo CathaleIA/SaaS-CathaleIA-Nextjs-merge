@@ -12,7 +12,7 @@ try:
     dynamodb = boto3.resource('dynamodb')
 except Exception as e:
     helper.init_failure(e)
-    
+
     
 @helper.create
 @helper.update
@@ -30,6 +30,7 @@ def do_action(event, _):
     settings_table_name = event['ResourceProperties']['SettingsTableName']
     cognitoUserPoolId = event['ResourceProperties']['cognitoUserPoolId']
     cognitoUserPoolClientId = event['ResourceProperties']['cognitoUserPoolClientId']
+    CognitoUserPoolDomain = event['ResourceProperties']['CognitoUserPoolDomain']
 
     table_system_settings = dynamodb.Table(settings_table_name)
 
@@ -44,6 +45,13 @@ def do_action(event, _):
             Item={
                     'settingName': 'appClientId-pooled',
                     'settingValue' : cognitoUserPoolClientId
+                }
+            )
+    
+    response = table_system_settings.put_item(
+            Item={
+                    'settingName': 'cognitoDomain-pooled',
+                    'settingValue' : CognitoUserPoolDomain
                 }
             )
 
