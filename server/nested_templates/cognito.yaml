@@ -188,5 +188,5 @@ Outputs:
   CognitoAdminUserGroupName:
     Value: !Ref CognitoAdminUserGroup
   CognitoUserPoolDomain:
-  Description: "Nombre de dominio del User Pool"
-  Value: !Ref CognitoUserPoolDomain  # Esta es la clave del cambio
+    Description: "Nombre de dominio del User Pool"
+    Value: !Ref CognitoUserPoolDomain  # Esta es la clave del cambio
