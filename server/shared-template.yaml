@@ -49,7 +49,11 @@ Parameters:
   TenantUserPoolCallbackURLParameter:
     Type: String
     Default: "http://example.com"
-    Description: "Enter Tenant Management userpool call back url"   
+    Description: "Enter Tenant Management userpool call back url"
+  TenantUserPoolCallbackURLAmplifyParameter:
+    Type: String
+    Default: "appui.d1ajb21hsxi2dm.amplifyapp.com"
+    Description: "Enter Tenant Management userpool call back url to Amplify hosted application"   
 Conditions:
   IsNotRunningInEventEngine: !Not [ !Equals [ !Ref EventEngineParameter, true] ]
 Resources:
@@ -76,6 +80,7 @@ Resources:
         SystemAdminRoleNameParameter: !Ref SystemAdminRoleNameParameter
         AdminUserPoolCallbackURLParameter: !If [IsNotRunningInEventEngine, !GetAtt UserInterface.Outputs.AdminAppSite, !Ref AdminUserPoolCallbackURLParameter]
         TenantUserPoolCallbackURLParameter: !If [IsNotRunningInEventEngine, !GetAtt UserInterface.Outputs.ApplicationSite, !Ref TenantUserPoolCallbackURLParameter]
+        TenantUserPoolCallbackURLAmplifyParameter: !Ref TenantUserPoolCallbackURLAmplifyParameter
         
   LambdaFunctions:
     Type: AWS::Serverless::Application

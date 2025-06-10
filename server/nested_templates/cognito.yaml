@@ -17,7 +17,10 @@ Parameters:
     Description: "Enter Admin Management userpool call back url"
   TenantUserPoolCallbackURLParameter:
     Type: String
-    Description: "Enter Tenant Management userpool call back url"  
+    Description: "Enter Tenant Management userpool call back url"
+  TenantUserPoolCallbackURLAmplifyParameter:
+    Type: String
+    Description: "Enter Tenant Management userpool call back url to Amplify hosting"   
 Resources:
   CognitoUserPool:
     Type: "AWS::Cognito::UserPool"
@@ -35,12 +38,12 @@ Resources:
             - "" 
             - - "Ingresa a Cathaleia UI mediante "
               - "https://"
-              - !Ref TenantUserPoolCallbackURLParameter 
+              - !Ref TenantUserPoolCallbackURLAmplifyParameter 
               - "/"
               - " con el username : {username} y clave temporal: {####}"
           EmailSubject: !Join 
             - "" 
-            - - "Your temporary password for Cathaleia application"
+            - - "Credenciales de acceso a Cathaleia UI con contraseña temporal"
       Schema:
         - AttributeDataType: "String"
           Name: email
@@ -65,9 +68,9 @@ Resources:
       SupportedIdentityProviders:
         - COGNITO
       CallbackURLs:
-        - !Join ["",["https://",!Ref TenantUserPoolCallbackURLParameter, "/"]]
+        - !Join ["",["https://",!Ref TenantUserPoolCallbackURLAmplifyParameter, "/"]]
       LogoutURLs:
-        - !Join ["",["https://",!Ref TenantUserPoolCallbackURLParameter, "/"]]  
+        - !Join ["",["https://",!Ref TenantUserPoolCallbackURLAmplifyParameter, "/"]]  
       AllowedOAuthScopes:
         - email
         - openid
