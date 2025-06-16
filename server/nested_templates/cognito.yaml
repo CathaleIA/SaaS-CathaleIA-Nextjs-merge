@@ -67,10 +67,14 @@ Resources:
         - implicit
       SupportedIdentityProviders:
         - COGNITO
+      # CallbackURLs:
+      #   - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]]
+      # LogoutURLs:
+      #   - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]] 
       CallbackURLs:
-        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]]
+        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter]]
       LogoutURLs:
-        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]] 
+        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter]] 
       AllowedOAuthScopes:
         - email
         - openid
