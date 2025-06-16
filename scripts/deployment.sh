@@ -177,34 +177,34 @@ EoF
       exit 1
   fi
 
-  cd ../Application
+#   cd ../Application
 
-  echo "Configuring environment for App Client"
+#   echo "Configuring environment for App Client"
 
-  cat << EoF > ./src/environments/environment.prod.ts
-  export const environment = {
-    production: true,
-    regApiGatewayUrl: '$ADMIN_APIGATEWAYURL'
-  };
-EoF
-  cat << EoF > ./src/environments/environment.ts
-  export const environment = {
-    production: true,
-    regApiGatewayUrl: '$ADMIN_APIGATEWAYURL'
-  };
-EoF
+#   cat << EoF > ./src/environments/environment.prod.ts
+#   export const environment = {
+#     production: true,
+#     regApiGatewayUrl: '$ADMIN_APIGATEWAYURL'
+#   };
+# EoF
+#   cat << EoF > ./src/environments/environment.ts
+#   export const environment = {
+#     production: true,
+#     regApiGatewayUrl: '$ADMIN_APIGATEWAYURL'
+#   };
+# EoF
 
-  npm install --legacy-peer-deps && npm run build
+#   npm install --legacy-peer-deps && npm run build
 
-  echo "aws s3 sync --delete --cache-control no-store dist s3://$APP_SITE_BUCKET"
-  aws s3 sync --delete --cache-control no-store dist s3://$APP_SITE_BUCKET 
+#   echo "aws s3 sync --delete --cache-control no-store dist s3://$APP_SITE_BUCKET"
+#   aws s3 sync --delete --cache-control no-store dist s3://$APP_SITE_BUCKET 
 
-  if [[ $? -ne 0 ]]; then
-      exit 1
-  fi
+#   if [[ $? -ne 0 ]]; then
+#       exit 1
+#   fi
 
-  echo "Completed configuring environment for App Client"
-  echo "Successfully completed deploying Application UI"
+#   echo "Completed configuring environment for App Client"
+#   echo "Successfully completed deploying Application UI"
 
   echo "Configuring environment for Landing Client, omitido de momento"
 #   cd ../Landing
