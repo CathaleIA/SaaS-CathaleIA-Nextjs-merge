@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "stack-pooled"
-s3_bucket = "sam-bootstrap-bucket-d001c2a8-82d3-451c-94ec-171cac32c234"
+s3_bucket = "sam-bootstrap-bucket-c8f159ce-a95a-4604-8384-2b5aa22b5d41"
 s3_prefix = "serverless-saas-tenant"
 region = "us-east-1"
 confirm_changeset = false
