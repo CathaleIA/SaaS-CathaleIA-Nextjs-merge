@@ -70,7 +70,7 @@ Resources:
       CallbackURLs:
         - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]]
       LogoutURLs:
-        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]] 
+        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter]] 
       # CallbackURLs:
       #   - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter]]
       # LogoutURLs:
