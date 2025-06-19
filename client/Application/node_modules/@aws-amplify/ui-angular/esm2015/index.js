@@ -1,0 +1,30 @@
+/*
+ * Public API Surface of ui-angular
+ */
+/**
+ * Modules
+ */
+export { AmplifyAuthenticatorModule } from './lib/components/authenticator/authenticator.module';
+/**
+ * Components
+ */
+export * from './lib/components/authenticator/components';
+export * from './lib/primitives';
+/**
+ * Helpers
+ */
+export * from './lib/common';
+/**
+ * Directives
+ */
+export * from './lib/utilities/amplify-slot/amplify-slot.directive';
+/**
+ * Services
+ */
+export * from './lib/services/custom-components.service';
+export * from './lib/services/authenticator.service';
+/**
+ * Re-export public APIs from `@aws-amplify/ui`
+ */
+export { translations } from '@aws-amplify/ui';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9wcm9qZWN0cy91aS1hbmd1bGFyL3NyYy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVIOztHQUVHO0FBQ0gsT0FBTyxFQUFFLDBCQUEwQixFQUFFLE1BQU0scURBQXFELENBQUM7QUFFakc7O0dBRUc7QUFDSCxjQUFjLDJDQUEyQyxDQUFDO0FBQzFELGNBQWMsa0JBQWtCLENBQUM7QUFFakM7O0dBRUc7QUFDSCxjQUFjLGNBQWMsQ0FBQztBQUU3Qjs7R0FFRztBQUNILGNBQWMscURBQXFELENBQUM7QUFFcEU7O0dBRUc7QUFDSCxjQUFjLDBDQUEwQyxDQUFDO0FBQ3pELGNBQWMsc0NBQXNDLENBQUM7QUFFckQ7O0dBRUc7QUFDSCxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHVpLWFuZ3VsYXJcbiAqL1xuXG4vKipcbiAqIE1vZHVsZXNcbiAqL1xuZXhwb3J0IHsgQW1wbGlmeUF1dGhlbnRpY2F0b3JNb2R1bGUgfSBmcm9tICcuL2xpYi9jb21wb25lbnRzL2F1dGhlbnRpY2F0b3IvYXV0aGVudGljYXRvci5tb2R1bGUnO1xuXG4vKipcbiAqIENvbXBvbmVudHNcbiAqL1xuZXhwb3J0ICogZnJvbSAnLi9saWIvY29tcG9uZW50cy9hdXRoZW50aWNhdG9yL2NvbXBvbmVudHMnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvcHJpbWl0aXZlcyc7XG5cbi8qKlxuICogSGVscGVyc1xuICovXG5leHBvcnQgKiBmcm9tICcuL2xpYi9jb21tb24nO1xuXG4vKipcbiAqIERpcmVjdGl2ZXNcbiAqL1xuZXhwb3J0ICogZnJvbSAnLi9saWIvdXRpbGl0aWVzL2FtcGxpZnktc2xvdC9hbXBsaWZ5LXNsb3QuZGlyZWN0aXZlJztcblxuLyoqXG4gKiBTZXJ2aWNlc1xuICovXG5leHBvcnQgKiBmcm9tICcuL2xpYi9zZXJ2aWNlcy9jdXN0b20tY29tcG9uZW50cy5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL3NlcnZpY2VzL2F1dGhlbnRpY2F0b3Iuc2VydmljZSc7XG5cbi8qKlxuICogUmUtZXhwb3J0IHB1YmxpYyBBUElzIGZyb20gYEBhd3MtYW1wbGlmeS91aWBcbiAqL1xuZXhwb3J0IHsgdHJhbnNsYXRpb25zIH0gZnJvbSAnQGF3cy1hbXBsaWZ5L3VpJztcbiJdfQ==
