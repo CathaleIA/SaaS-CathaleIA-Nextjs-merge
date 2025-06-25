@@ -30,9 +30,9 @@ Resources:
                   - arn:aws:logs:us-east-1:240435918890:log-group:/aws/lambda/TenantReportGenerarPDF:*
               - Effect: Allow
                 Action:
+                  - dynamodb:UpdateItem
                   - dynamodb:GetItem
                   - dynamodb:PutItem
-                  - dynamodb:UpdateItem
                 Resource: "arn:aws:dynamodb:us-east-1:240435918890:table/tablaReports"
               - Effect: Allow
                 Action:
@@ -44,6 +44,7 @@ Resources:
     DependsOn: TenantReportGenerarPDFRole
     Properties:
       CodeUri: lambdas3/target/lambdas3-1.0-SNAPSHOT.jar
+      Description: ''
       Handler: com.normalizar.controller.RenderPdfLambda::handleRequest
       Runtime: java17
       Architectures:
@@ -66,5 +67,5 @@ Resources:
         Api1:
           Type: Api
           Properties:
-            Path: /pdf-render
+            Path: /pdf_render
             Method: ANY
