@@ -1,4 +1,3 @@
-  cd ../server
-  REGION=$(echo "us-east-1")
-  sam build -t tenant-reports.yaml
-  sam deploy --config-file tenant-reports.toml --region=$REGION
+cd ../server
+REGION=$(echo "us-east-1")
+sam deploy --template tenant-reports.yaml --config-file tenant-reports.toml --region=$REGION

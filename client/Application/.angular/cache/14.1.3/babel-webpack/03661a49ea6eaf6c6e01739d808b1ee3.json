@@ -1,0 +1,1 @@
+{"ast":null,"code":"var isAppInForeground = function () {\n  return true;\n};\n\nexport { isAppInForeground }; //# sourceMappingURL=AppUtils.js.map","map":null,"metadata":{},"sourceType":"module"}
