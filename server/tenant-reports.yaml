@@ -138,3 +138,66 @@ Resources:
           Properties:
             Path: /normalizar
             Method: ANY
+            
+  # Normalizar Excel Lambda Function
+  NormalizarExcelRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: BasicLambdaExecution
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                Resource: arn:aws:logs:us-east-1:240435918890:*
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: 
+                  - arn:aws:logs:us-east-1:240435918890:log-group:/aws/lambda/NormalizarExcel:*
+
+  NormalizarExcel:
+    Type: AWS::Serverless::Function
+    DependsOn: NormalizarExcelRole
+    Properties:
+      CodeUri: normalizacion/
+      Description: ''
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 70
+      Role: !GetAtt NormalizarExcelRole.Arn
+      EphemeralStorage:
+        Size: 512
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      PackageType: Zip
+      RecursiveLoop: Terminate
+      SnapStart:
+        ApplyOn: None
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /MyResource
+            Method: ANY
+        Api2:
+          Type: Api
+          Properties:
+            Path: /inter_normalizar
+            Method: ANY
