@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Funcion lambda JAVA - TEST 1
+
+Resources:
+  TenantReportGenerarPDF:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas3/target/lambdas3-1.0-SNAPSHOT.jar
+      Description: Genera PDF a partir de datos recibidos via API
+      MemorySize: 512
+      Timeout: 15
+      Handler: com.normalizar.controller.RenderPdfLambda::handleRequest
+      Runtime: java17
+      Architectures:
+        - x86_64
+      EphemeralStorage:
+        Size: 512
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      PackageType: Zip
+      Policies:
+        - Statement:
+            - Sid: AccessToDynamoDB
+              Effect: Allow
+              Action:
+                - dynamodb:UpdateItem
+                - dynamodb:GetItem
+                - dynamodb:PutItem
+              Resource:
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/tenantReportsTable"
+            - Sid: SelfInvoke
+              Effect: Allow
+              Action:
+                - lambda:InvokeFunction
+              Resource:
+                - !GetAtt TenantReportGenerarPDF.Arn
+            - Sid: CloudWatchLogsAccess
+              Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+              Resource:
+                - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*"
+      Events:
+        ApiTenantPdf:
+          Type: Api
+          Properties:
+            Path: /tenant/pdf-render
+            Method: ANY
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto

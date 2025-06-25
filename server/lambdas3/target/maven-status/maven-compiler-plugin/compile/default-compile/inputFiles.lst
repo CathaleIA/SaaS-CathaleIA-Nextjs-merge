@@ -1,0 +1,17 @@
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\ConfinS3Client\S3Clientconfig.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\domain\S3FileInfo.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\DownloadRequest.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\DownloadResponse.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\ListObjectResponse.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\ListObjectsRequest.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\NewObjectRequest.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\UploadRequest.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\DtoLambda\UploadResponse.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\LambdaHandlers\DownLoadLambda.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\LambdaHandlers\ListLoadLambda.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\LambdaHandlers\UploadLambda.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\Main.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\pdfCreateUseCase\ICreatePdf.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\pdfCreateUseCase\impl\ImplCreateService.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\S3method\impl\ImplUseCaseS3Method.java
+C:\Users\hcabrera\Documents\project_app_web\02_Aprendizaje\01_Desarrollo\microservices\S3ReportMaven\lambdas3\src\main\java\com\s3reportlambda\S3method\IuseCaseS3Methods.java
