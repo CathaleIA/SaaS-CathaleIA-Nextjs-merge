@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Registro de Pruebas Dinámicas a Motor Eléctrico de Inducción</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 10pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .header-table td {
+            border: none;
+            padding: 2px 5px;
+        }
+
+        .section-title {
+            background-color: #d9d9d9;
+            text-align: center;
+            font-weight: bold;
+            padding: 7px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .box {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table class="header-table">
+        <tr>
+            <td style="width: 15%;"><img class="logo" src="https://via.placeholder.com/100x50?text=COPOWER"
+                    alt="COPOWER Logo" /></td>
+            <td style="width: 60%; text-align: center; font-size: 12pt; font-weight: bold;">REGISTRO DE PRUEBAS
+                DINÁMICAS A MOTOR ELÉCTRICO DE INDUCCIÓN</td>
+            <td style="width: 25%;">
+                <table>
+                    <tr>
+                        <td>Protocolo 01</td>
+                        <td th:text="${dataNormalizada.header.protocolo}"></td>
+                    </tr>
+                    <tr>
+                        <td>Hoja 1 de 2</td>
+                        <td th:text="${dataNormalizada.header.hoja}"></td>
+                    </tr>
+                    <tr>
+                        <td>Código.</td>
+                        <td th:text="${dataNormalizada.header.codigo}"></td>
+                    </tr>
+                    <tr>
+                        <td>Ciudad.</td>
+                        <td th:text="${dataNormalizada.header.ciudad}"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha</td>
+                        <td th:text="${dataNormalizada.header.fecha}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="clear"></div>
+
+    <div style="margin-top: 20px; font-weight: bold;">CEMENTO ARGOS, S.A.</div>
+
+    <div class="section-title">INFORMACIÓN DEL MOTOR</div>
+    <table>
+        <tr>
+            <td style="width: 25%;">Número de serie:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.numero_de_serie}"></td>
+            <td style="width: 25%;">Potencia [HP]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.potencia_hp}"></td>
+            <td style="width: 25%;">Velocidad nom. [RPM]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.velocidad_nom_rpm}"></td>
+        </tr>
+        <tr>
+            <td>Fabrica:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.fabrica}"></td>
+            <td>Corriente nom. [A]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.corriente_nom_a}"></td>
+            <td>Eficacia [%]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.eficacia_porcentaje}"></td>
+        </tr>
+        <tr>
+            <td>Ubicación:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.ubicacion}"></td>
+            <td>Tensión nom. [V]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.tension_nom_v}"></td>
+            <td>Tipo de motor:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.tipo_de_motor}"></td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.nombre}"></td>
+            <td>Pot. Activa [KW]:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.pot_activa_kw}"></td>
+            <td>Punto de medida:</td>
+            <td th:text="${dataNormalizada.informacion_del_motor.punto_de_medida}"></td>
+        </tr>
+    </table>
+
+    <div class="section-title">TENSIONES DE LINEA</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Fund RMS [V]</th>
+                <th>Tot RMS [V]</th>
+                <th>C.F.</th>
+                <th>THD[%]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.tensiones_de_linea_rms}">
+                <td th:text="${row.fase}"></td>
+                <td th:text="${row.fund_rms_v}"></td>
+                <td th:text="${row.tot_rms_v}"></td>
+                <td th:text="${row.cf}"></td>
+                <td th:text="${row.thd}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">TENSIONES DE FASE</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Fund RMS [V]</th>
+                <th>Tot RMS [V]</th>
+                <th>C.F.</th>
+                <th>THD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.tensiones_de_linea_fase}">
+                <td th:text="${row.fase}"></td>
+                <td th:text="${row.fund_rms_v}"></td>
+                <td th:text="${row.tot_rms_v}"></td>
+                <td th:text="${row.cf}"></td>
+                <td th:text="${row.thd}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">CORRIENTES DE LINEA</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Fund RMS [A]</th>
+                <th>Tot RMS [V]</th>
+                <th>C.F.</th>
+                <th>THD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.corrientes_de_linea}">
+                <td th:text="${row.fase}"></td>
+                <td th:text="${row.fund_rms_a}"></td>
+                <td th:text="${row.tot_rms_v}"></td>
+                <td th:text="${row.cf}"></td>
+                <td th:text="${row.thd}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">POTENCIA</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Activa [kW]</th>
+                <th>Reactiva [KVAR]</th>
+                <th>Aparente [KVA]</th>
+                <th>PF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.potencia}">
+                <td th:text="${row.fase}"></td>
+                <td th:text="${row.activa_kw}"></td>
+                <td th:text="${row.reactiva_kvar}"></td>
+                <td th:text="${row.aparente_kva}"></td>
+                <td th:text="${row.pf}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">COMPONENTES SIMETRICOS DE SECUENCIA</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Secuencia positiva</th>
+                <th>Secuencia negativa</th>
+                <th>Secuencia homopolar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tensión de linea</td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_linea.positiva}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_linea.negativa}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_linea.homopolar}"></td>
+            </tr>
+            <tr>
+                <td>Tensión de fase</td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_fase.positiva}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_fase.negativa}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.tension_de_fase.homopolar}"></td>
+            </tr>
+            <tr>
+                <td>Corriente de linea</td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.corriente_de_linea.positiva}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.corriente_de_linea.negativa}"></td>
+                <td th:text="${dataNormalizada.componentes_simetricos_de_secuencia.corriente_de_linea.homopolar}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">EVALUACIÓN DE ROTOR</div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Frecuencia Nominal [Hz]</th>
+                <th>Frecuencia Medida [Hz]</th>
+                <th>Desviación [%]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.evaluacion_de_rotor}">
+                <td th:text="${row.fase}"></td>
+                <td th:text="${row.frecuencia_nominal_hz}"></td>
+                <td th:text="${row.frecuencia_medida_hz}"></td>
+                <td th:text="${row.desviacion_porcentaje}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">EVALUACIÓN DE EXCENTRICIDAD</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Pico</th>
+                <th>Amplitud</th>
+                <th>Velocidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${dataNormalizada.evaluacion_de_excentricidad}">
+                <td th:text="${row.pico}"></td>
+                <td th:text="${row.amplitud}"></td>
+                <td th:text="${row.velocidad}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">Conclusiones</div>
+    <div class="box">
+        <ul th:if="${conclusiones != null and !conclusiones.isEmpty()}">
+            <li th:each="conclusion : ${conclusiones}" th:text="${conclusion}"></li>
+        </ul>
+        <p th:unless="${conclusiones != null and !conclusiones.isEmpty()}">No hay conclusiones disponibles.</p>
+    </div>
+
+</body>
+
+</html>

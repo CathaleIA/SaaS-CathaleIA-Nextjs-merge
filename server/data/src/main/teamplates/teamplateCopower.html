@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body { font-family: Arial; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Reporte de Prueba: <span th:text="${tipoPrueba}"></span></h1>
+    <p><strong>Estándar aplicado:</strong> <span th:text="${estandar}"></span></p>
+    <p><strong>Conclusiones:</strong> <span th:text="${conclusiones}"></span></p>
+
+    <div th:each="tabla : ${tablas}">
+        <h3 th:text="${tabla.titulo}"></h3>
+        <table>
+            <thead>
+                <tr th:each="col : ${tabla.columnas}">
+                    <th th:text="${col}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="fila : ${tabla.filas}">
+                    <td th:each="celda : ${fila}" th:text="${celda}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+    </div>
+</body>
+</html>
