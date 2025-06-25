@@ -21,15 +21,23 @@ Resources:
               - Effect: Allow
                 Action:
                   - logs:CreateLogGroup
+                Resource: arn:aws:logs:us-east-1:240435918890:*
+              - Effect: Allow
+                Action:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
-                Resource: "*"
+                Resource: 
+                  - arn:aws:logs:us-east-1:240435918890:log-group:/aws/lambda/TenantReportGenerarPDF:*
               - Effect: Allow
                 Action:
                   - dynamodb:GetItem
                   - dynamodb:PutItem
                   - dynamodb:UpdateItem
-                Resource: "arn:aws:dynamodb:us-east-1:123456789012:table/tablaReports"
+                Resource: "arn:aws:dynamodb:us-east-1:240435918890:table/tablaReports"
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource: !Sub "arn:aws:lambda:us-east-1:240435918890:function:${AWS::StackName}-TenantReportGenerarPDF-*"
 
   TenantReportGenerarPDF:
     Type: AWS::Serverless::Function
@@ -43,12 +51,20 @@ Resources:
       MemorySize: 512
       Timeout: 15
       Role: !GetAtt TenantReportGenerarPDFRole.Arn
+      EphemeralStorage:
+        Size: 512
       EventInvokeConfig:
         MaximumEventAgeInSeconds: 21600
         MaximumRetryAttempts: 2
+      PackageType: Zip
+      RecursiveLoop: Terminate
+      SnapStart:
+        ApplyOn: None
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto
       Events:
-        ApiTenantPdf:
+        Api1:
           Type: Api
           Properties:
-            Path: /tenant/pdf-render
+            Path: /pdf-render
             Method: ANY
