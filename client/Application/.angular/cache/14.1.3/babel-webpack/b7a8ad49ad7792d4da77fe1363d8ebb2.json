@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const navItems = [{\n  name: 'Dashboard',\n  url: '/dashboard',\n  icon: 'insights'\n}, {\n  name: 'Products',\n  url: '/products',\n  icon: 'sell'\n}, {\n  name: 'Orders',\n  url: '/orders',\n  icon: 'shopping_cart'\n}, {\n  name: 'Users',\n  url: '/users',\n  icon: 'supervisor_account'\n}];","map":null,"metadata":{},"sourceType":"module"}
