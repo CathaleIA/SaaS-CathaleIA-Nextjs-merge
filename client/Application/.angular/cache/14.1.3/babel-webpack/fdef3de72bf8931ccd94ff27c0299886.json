@@ -1,1 +1,0 @@
-{"ast":null,"code":"var o;\n!function (o) {\n  o.Apple = \"SignInWithApple\", o.Amazon = \"LoginWithAmazon\", o.Facebook = \"Facebook\", o.Google = \"Google\";\n}(o || (o = {}));\nexport { o as FederatedIdentityProviders };","map":null,"metadata":{},"sourceType":"module"}
