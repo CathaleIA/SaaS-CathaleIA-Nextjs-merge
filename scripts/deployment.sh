@@ -71,7 +71,7 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
     sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" tenant-samconfig.toml
     sed -i "s|s3_bucket = .*|s3_bucket = \"$SAM_S3_BUCKET\"|g" ../Lab7/samconfig.toml
   fi
-
+  rm -rf .aws-sam
   sam build -t shared-template.yaml
   
   if [ "$IS_RUNNING_IN_EVENT_ENGINE" = true ]; then
@@ -90,7 +90,7 @@ if [[ $server -eq 1 ]] || [[ $tenant -eq 1 ]]; then
   sam deploy --config-file tenant-samconfig.toml --region=$REGION
 fi
 
-if [[ $server -eq 1 ]] || [[ $pipeline -eq 1 ]]; then
+if [[ $pipeline -eq 1 ]]; then
   echo "CI/CD pipeline code is getting deployed"
 
   #Deploying CI/CD pipeline
