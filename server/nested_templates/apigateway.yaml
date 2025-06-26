@@ -5,6 +5,8 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   Template to setup api gateway, apis, api keys and usage plan as part of bootstrap
+Metadata:
+  actualizacion: Copower DevOps
 Parameters:
   StageName:
     Type: String
