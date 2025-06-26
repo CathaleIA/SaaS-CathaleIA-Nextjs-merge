@@ -69,8 +69,10 @@ Resources:
         - COGNITO
       CallbackURLs:
         - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/api/auth/callback"]]
+        - !Join ["",["http://", "localhost:3000", "/api/auth/callback"]]
       LogoutURLs:
-        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/select-tenant"]] 
+        - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter, "/select-tenant"]]
+        - !Join ["",["http://",  "localhost:3000", "/select-tenant"]] 
       # CallbackURLs:
       #   - !Join ["",["https://",  !Ref TenantUserPoolCallbackURLAmplifyParameter]]
       # LogoutURLs:

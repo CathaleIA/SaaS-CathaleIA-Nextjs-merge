@@ -619,8 +619,9 @@ Resources:
                     -  !Ref GetUserFunctionArn
                     - /invocations
                 httpMethod: POST
-                type: aws_proxy    
-            put:              
+                type: aws_proxy
+
+            put:
               produces:
                 - application/json
               responses: {}
@@ -635,8 +636,9 @@ Resources:
                     - /invocations
                 httpMethod: POST
                 type: aws_proxy
-            delete:          
-              summary: Diables a user
+
+            delete:
+              summary: Disables a user
               description: Disable a user by a user id    
               produces:
                 - application/json
@@ -652,6 +654,36 @@ Resources:
                     - /invocations
                 httpMethod: POST
                 type: aws_proxy
+
+            options:
+              consumes:
+                - application/json
+              produces:
+                - application/json
+              responses:
+                '200':
+                  description: 200 response
+                  schema:
+                    $ref: "#/definitions/Empty"
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: string
+                    Access-Control-Allow-Methods:
+                      type: string
+                    Access-Control-Allow-Headers:
+                      type: string
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: 200
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Methods: "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                passthroughBehavior: when_no_match
+                requestTemplates:
+                  application/json: "{\"statusCode\": 200}"
+                type: mock
           /user/tenant-admin:
             post:
               summary: Creates a tenant admin user
