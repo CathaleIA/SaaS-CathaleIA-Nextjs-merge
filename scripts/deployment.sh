@@ -77,7 +77,7 @@ if [[ $server -eq 1 ]] || [[ $bootstrap -eq 1 ]]; then
   if [ "$IS_RUNNING_IN_EVENT_ENGINE" = true ]; then
     sam deploy --config-file shared-samconfig.toml --region=$REGION --parameter-overrides EventEngineParameter=$IS_RUNNING_IN_EVENT_ENGINE AdminUserPoolCallbackURLParameter=$ADMIN_SITE_URL TenantUserPoolCallbackURLParameter=$APP_SITE_URL
   else
-    sam deploy --config-file shared-samconfig.toml --region=$REGION --parameter-overrides EventEngineParameter=$IS_RUNNING_IN_EVENT_ENGINE
+    sam deploy --config-file shared-samconfig.toml --region=$REGION --parameter-overrides EventEngineParameter=$IS_RUNNING_IN_EVENT_ENGINE --force-upload
   fi
   cd ../scripts
 fi  
