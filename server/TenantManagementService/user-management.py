@@ -200,7 +200,15 @@ def get_user(event, context):
             return utils.create_unauthorized_response()
         else:
             logger.log_with_tenant_context(event, "Request completed to get new user")
-            return utils.create_success_response(user_info.__dict__)
+            # Combinar los atributos de UserInfo + campos del authorizer
+            response_data = {
+                **user_info.__dict__,
+                "tenant_name": event['requestContext']['authorizer'].get('tenantName'),
+                "tenant_tier": event['requestContext']['authorizer'].get('tenantTier'),
+                "tenant_email": event['requestContext']['authorizer'].get('tenantEmail'),
+                "dedicated_tenancy": event['requestContext']['authorizer'].get('dedicatedTenancy')
+            }
+            return utils.create_success_response(response_data)
 
 @tracer.capture_lambda_handler
 def update_user(event, context):

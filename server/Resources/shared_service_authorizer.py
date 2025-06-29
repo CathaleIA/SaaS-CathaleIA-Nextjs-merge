@@ -48,7 +48,7 @@ def lambda_handler(event, context):
         logger.info(tenant_details)
         userpool_id = tenant_details['Item']['userPoolId']
         appclient_id = tenant_details['Item']['appClientId']    
-        api_key = tenant_details['Item']['apiKey']    
+        api_key = tenant_details['Item']['apiKey'] 
 
     #get keys for tenant user pool to validate
     keys_url = 'https://cognito-idp.{}.amazonaws.com/{}/.well-known/jwks.json'.format(region, userpool_id)
@@ -122,9 +122,15 @@ def lambda_handler(event, context):
         'tenantId': tenant_id,
         'userPoolId': userpool_id,
         'apiKey': api_key,
-        'userRole': user_role
+        'userRole': user_role,
+        'tenantAdreess': tenant_details['Item']['tenantAddress'],
+        'tenantName': tenant_details['Item']['tenantName'],
+        'tenantPhone': tenant_details['Item']['tenantPhone'],
+        'tenantTier': tenant_details['Item']['tenantTier'],
     }
     
+    userpool_id = tenant_details['Item']['userPoolId']
+
     authResponse['context'] = context
     authResponse['usageIdentifierKey'] = api_key
     
