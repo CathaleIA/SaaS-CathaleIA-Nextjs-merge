@@ -206,7 +206,7 @@ def get_user(event, context):
                 "tenant_name": event['requestContext']['authorizer'].get('tenantName'),
                 "tenant_tier": event['requestContext']['authorizer'].get('tenantTier'),
             }
-            return utils.create_success_response(response_data)
+            return utils.generate_response(response_data)
 
 @tracer.capture_lambda_handler
 def update_user(event, context):
