@@ -200,13 +200,11 @@ def get_user(event, context):
             return utils.create_unauthorized_response()
         else:
             logger.log_with_tenant_context(event, "Request completed to get new user")
-            # Combinar los atributos de UserInfo + campos del authorizer
+
             response_data = {
                 **user_info.__dict__,
                 "tenant_name": event['requestContext']['authorizer'].get('tenantName'),
                 "tenant_tier": event['requestContext']['authorizer'].get('tenantTier'),
-                "tenant_email": event['requestContext']['authorizer'].get('tenantEmail'),
-                "dedicated_tenancy": event['requestContext']['authorizer'].get('dedicatedTenancy')
             }
             return utils.create_success_response(response_data)
 
@@ -375,7 +373,13 @@ def get_user_info(event, user_pool_id, user_name):
     logger.log_with_tenant_context(event, response)
 
     user_info =  UserInfo()
-    user_info.user_name = response["Username"]
+    # Datos directos del usuario
+    user_info.user_name = response.get("Username")
+    user_info.status = response.get("UserStatus")
+    user_info.enabled = response.get("Enabled")
+    user_info.created = response.get("UserCreateDate")
+    user_info.modified = response.get("UserLastModifiedDate")
+
     for attr in response["UserAttributes"]:
         if(attr["Name"] == "custom:tenantId"):
             user_info.tenant_id = attr["Value"]
