@@ -54,7 +54,7 @@ Parameters:
     Description: "Enter Tenant Management userpool call back url"
   TenantUserPoolCallbackURLAmplifyParameter:
     Type: String
-    Default: "layoutshadcn.d1ajb21hsxi2dm.amplifyapp.com"
+    Default: "appui.d1ajb21hsxi2dm.amplifyapp.com"
     Description: "Enter Tenant Management userpool call back url to Amplify hosted sapplication"   
 Conditions:
   IsNotRunningInEventEngine: !Not [ !Equals [ !Ref EventEngineParameter, true] ]
